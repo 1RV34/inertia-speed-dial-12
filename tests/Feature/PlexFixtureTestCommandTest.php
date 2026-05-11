@@ -19,14 +19,14 @@ it('sends all fixtures to the user webhook url', function () {
 
     $fixtureCount = count(glob(base_path('tests/fixtures/plex/*.json')) ?: []);
 
-    $this->artisan('plex:fixtures-test', ['user' => $user->email])
+    $this->artisan(PlexFixtureTestCommand::class, ['user' => $user->email])
         ->assertSuccessful();
 
     Http::assertSentCount($fixtureCount);
 });
 
 it('fails when user is not found', function () {
-    $this->artisan('plex:fixtures-test', ['user' => 'nonexistent@example.com'])
+    $this->artisan(PlexFixtureTestCommand::class, ['user' => 'nonexistent@example.com'])
         ->expectsOutputToContain('User not found')
         ->assertFailed();
 });
@@ -34,7 +34,7 @@ it('fails when user is not found', function () {
 it('fails when user has no plex connection', function () {
     $user = User::factory()->create();
 
-    $this->artisan('plex:fixtures-test', ['user' => $user->email])
+    $this->artisan(PlexFixtureTestCommand::class, ['user' => $user->email])
         ->expectsOutputToContain('does not have a Plex connection')
         ->assertFailed();
 });
