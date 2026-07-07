@@ -9,7 +9,7 @@ use App\Data\PlexEvent\PlexEventRequestData;
 use App\Events\PlexScrobbleEvent;
 use App\Listeners\SyncWatchesToTrakt;
 use App\Models\User;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Spatie\LaravelData\Optional;

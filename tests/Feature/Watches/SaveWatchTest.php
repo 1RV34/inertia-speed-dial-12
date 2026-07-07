@@ -12,7 +12,7 @@ use App\Models\Season;
 use App\Models\Series;
 use App\Models\User;
 use App\Models\Watch;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Event;
 use Spatie\LaravelData\Optional;
 
