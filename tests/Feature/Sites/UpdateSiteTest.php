@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Testing\TestResponse;
-use Str;
+use Illuminate\Support\Str;
 
 use function Pest\Laravel\assertDatabaseHas;
 
