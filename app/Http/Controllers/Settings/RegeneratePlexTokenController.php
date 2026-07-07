@@ -14,9 +14,7 @@ class RegeneratePlexTokenController extends Controller
     {
         $user = $request->user();
 
-        if (! $user->hasPlexConnection()) {
-            abort(404);
-        }
+        abort_unless($user->hasPlexConnection(), 404);
 
         $user->generatePlexToken();
 

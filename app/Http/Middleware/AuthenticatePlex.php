@@ -21,15 +21,11 @@ class AuthenticatePlex
     {
         $requestToken = $request->query('token');
 
-        if (! is_string($requestToken) || $requestToken === '') {
-            abort(401);
-        }
+        abort_if(! is_string($requestToken) || $requestToken === '', 401);
 
         $user = User::query()->where('plex_token', $requestToken)->first();
 
-        if (! $user) {
-            abort(401);
-        }
+        abort_unless($user, 401);
 
         Auth::setUser($user);
 
